@@ -1,31 +1,23 @@
-Shader "BlobCharacter/Standart"
+Shader "BlobCharacter/Mobile"
 {
 
 Properties
 {
     [Header(PBS)]
+    _BaseColor("Color", Color) = (1.0, 1.0, 1.0, 1.0)
     _Metallic("Metallic", Range(0.0, 1.0)) = 0.5
     _Glossiness("Smoothness", Range(0.0, 1.0)) = 0.5
 
-    [Header(Pass)]
-    [Enum(UnityEngine.Rendering.CullMode)] _Cull("Culling", Int) = 2
+    [HideInInspector] [Enum(UnityEngine.Rendering.CullMode)] _Cull("Culling", Int) = 2
+    [HideInInspector] [Toggle][KeyEnum(Off, On)] _ZWrite("ZWrite", Float) = 1
 
-    [Toggle][KeyEnum(Off, On)] _ZWrite("ZWrite", Float) = 1
+    [HideInInspector]_Loop("Loop", Range(1, 100)) = 25
+    [HideInInspector]_MinDistance("Minimum Distance", Range(0.001, 0.1)) = 0.0025
+    [HideInInspector]_DistanceMultiplier("Distance Multiplier", Range(0.001, 2.0)) = 1.0
+    [HideInInspector] [PowerSlider(10.0)] _NormalDelta("NormalDelta", Range(0.00001, 0.1)) = 0.0001
 
-    [Header(Raymarching)]
-    _Loop("Loop", Range(1, 100)) = 30
-    _MinDistance("Minimum Distance", Range(0.001, 0.1)) = 0.01
-    _DistanceMultiplier("Distance Multiplier", Range(0.001, 2.0)) = 1.0
-    [PowerSlider(10.0)] _NormalDelta("NormalDelta", Range(0.00001, 0.1)) = 0.0001
-
-// @block Properties
-[Header(Additional Parameters)]
-
-[Header(Float Parameters)]
-_Smooth("Smooth", float) = 17.5
-    
-[Header(Color Parameters)]
-_BaseColor("Color", Color) = (1.0, 1.0, 1.0, 1.0)
+    [Header(Float Parameters)]
+    _Smooth("Smooth", Range(3, 60)) = 17.5
 
 // @endblock
 }
@@ -81,41 +73,41 @@ float _Smooth;
 
 // Global Variables
 
-    float4 headPos;
+float4 headPos;
 
-    float4 torsoUpperPos;
-    float4 torsoLowerPos;
+float4 torsoUpperPos;
+float4 torsoLowerPos;
 
-    float4 leftArmUpperPos; 
-    float4 leftArmLowerPos;
+float4 leftArmUpperPos; 
+float4 leftArmLowerPos;
 
-    float4 rightArmUpperPos;
-    float4 rightArmLowerPos;
+float4 rightArmUpperPos;
+float4 rightArmLowerPos;
 
-    float4 leftLegUpperPos; 
-    float4 leftLegLowerPos;
+float4 leftLegUpperPos; 
+float4 leftLegLowerPos;
 
-    float4 rightLegUpperPos;
-    float4 rightLegLowerPos;
+float4 rightLegUpperPos;
+float4 rightLegLowerPos;
 
-    float head;
+float head;
 
-    float torsoUpper;
-    float torsoLower; 
-    
-    float leftArmUpper;
-    float leftArmLower;
-    
-    float rightArmUpper;
-    float rightArmLower;
-    
-    float leftLegUpper;
-    float leftLegLower;
-    
-    float rightLegUpper;
-    float rightLegLower;
+float torsoUpper;
+float torsoLower; 
 
-    float result;
+float leftArmUpper;
+float leftArmLower;
+
+float rightArmUpper;
+float rightArmLower;
+
+float leftLegUpper;
+float leftLegLower;
+
+float rightLegUpper;
+float rightLegLower;
+
+float result;
 
 inline float DistanceFunction(float3 wpos)
 {
@@ -187,7 +179,7 @@ Pass
     ZWrite [_ZWrite]
 
     CGPROGRAM
-    #include "Assets\uRaymarching\Shaders\Include\Legacy/ForwardBaseStandard.cginc"
+    #include "Assets/uRaymarching/Shaders/Include/Legacy/ForwardBaseStandard.cginc"
     #pragma target 3.0
     #pragma vertex Vert
     #pragma fragment Frag
@@ -204,7 +196,7 @@ Pass
     Blend One One
 
     CGPROGRAM
-    #include "Assets\uRaymarching\Shaders\Include\Legacy/ForwardAddStandard.cginc"
+    #include "Assets/uRaymarching/Shaders/Include/Legacy/ForwardAddStandard.cginc"
     #pragma target 3.0
     #pragma vertex Vert
     #pragma fragment Frag
@@ -220,7 +212,7 @@ Pass
     Tags { "LightMode" = "ShadowCaster" }
 
     CGPROGRAM
-    #include "Assets\uRaymarching\Shaders\Include\Legacy/ShadowCaster.cginc"
+    #include "Assets/uRaymarching/Shaders/Include/Legacy/ShadowCaster.cginc"
     #pragma target 3.0
     #pragma vertex Vert
     #pragma fragment Frag
