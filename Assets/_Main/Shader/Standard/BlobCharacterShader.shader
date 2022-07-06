@@ -1,4 +1,4 @@
-Shader "BlobCharacter/Standart"
+Shader "BlobCharacter/Standard"
 {
 
 Properties
@@ -190,7 +190,7 @@ inline void PostEffect(RaymarchInfo ray, inout PostEffectOutput o)
 {
     _colorBlendResult1 = float4(3.0 / head, 3.0 / torsoUpper, 3.0 / torsoLower, 3.0 / leftArmUpper);
     _colorBlendResult2 = float4(3.0 / leftArmLower, 3.0 / rightArmUpper, 3.0 / rightArmLower, 3.0 / leftLegUpper);
-    _colorBlendResult3 = float4(3.0 / leftLegLower, 3.0/ rightLegUpper, 3.0 / rightLegLower, 0);
+    _colorBlendResult3 = float4(3.0 / leftLegLower, 3.0/ rightLegUpper, 3.0 / rightLegLower, torsoUpper / 3.0);
 
     _computeAlbedoResult1 =
         _colorBlendResult1.x * _HeadColor +
@@ -207,7 +207,8 @@ inline void PostEffect(RaymarchInfo ray, inout PostEffectOutput o)
     _computeAlbedoResult3 =
         _colorBlendResult3.x * _LeftLegColor +
         _colorBlendResult3.y * _RightLegColor +
-        _colorBlendResult3.z * _RightLegColor;
+        _colorBlendResult3.z * _RightLegColor +
+        _colorBlendResult3.z * _TorsoColor;
 
     _computeAlbedoFinalResult = normalize(fixed3(
         _computeAlbedoResult1 +

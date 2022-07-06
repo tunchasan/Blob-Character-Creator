@@ -12,7 +12,7 @@ Properties
     [HideInInspector] [Toggle][KeyEnum(Off, On)] _ZWrite("ZWrite", Float) = 1
 
     [HideInInspector]_Loop("Loop", Range(1, 100)) = 25
-    [HideInInspector]_MinDistance("Minimum Distance", Range(0.001, 0.1)) = 0.0025
+    [HideInInspector]_MinDistance("Minimum Distance", Range(0.001, 0.1)) = 0.1
     [HideInInspector]_DistanceMultiplier("Distance Multiplier", Range(0.001, 2.0)) = 1.0
     [HideInInspector] [PowerSlider(10.0)] _NormalDelta("NormalDelta", Range(0.00001, 0.1)) = 0.0001
 
