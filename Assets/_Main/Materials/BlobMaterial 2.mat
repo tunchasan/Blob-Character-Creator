@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BlobMaterial
+  m_Name: BlobMaterial 2
   m_Shader: {fileID: 4800000, guid: d36b7ffba7b1e4d39b4e60e89ae1f03d, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
@@ -56,7 +56,7 @@ Material:
     - _TotalScale: 0.1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 1, g: 0.8, b: 0, a: 1}
+    - _BaseColor: {r: 1, g: 0, b: 0.64705884, a: 1}
     - _CapsuleColor: {r: 1, g: 0, b: 0, a: 1}
     - _CapsuleColor1: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
